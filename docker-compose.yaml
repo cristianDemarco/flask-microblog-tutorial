@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  microblog:
+    build: .
+    ports:
+      - 5000:5000
+  
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=microblog
+      - MYSQL_USER=microblog
+      - MYSQL_PASSWORD=mysql
+      - SECRET_KEY='7sdyucyi1iMvGoGk4tQK'
+      - FLASK_APP = microblog.py
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=microblog
+      - MYSQL_USER=microblog
+      - MYSQL_PASSWORD=mysql
+    volumes: 
+      - cache:/data
+    ports:
+      - 3306:3306
+volumes:
+  cache:
+    driver: local
