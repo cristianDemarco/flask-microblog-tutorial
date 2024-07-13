@@ -7,10 +7,10 @@ class Config:
     MYSQL_USER = os.environ.get("MYSQL_USER")
     MYSQL_HOST = os.environ.get("MYSQL_HOST")
     MYSQL_DATABASE = os.environ.get("MYSQL_DATABASE")
-    SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD} \
-        @{MYSQL_HOST}/{MYSQL_DATABASE}"
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-    #     'sqlite:///' + os.path.join(basedir, 'app.db')
+    # SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD} \
+    #    @{MYSQL_HOST}/{MYSQL_DATABASE}"
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, 'app.db')
     
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
